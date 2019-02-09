@@ -1,0 +1,111 @@
+:local(.wrapper){
+  max-width: 50rem;
+  margin: 0 auto;
+  display: block;
+  position: relative;
+  width: 100%;
+  background: #fff;
+  border: 0.0625rem solid #eee;
+}
+
+/*Grid*/
+:local(.row) {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+:local(.rowMiddle) {
+  align-items: center;
+}
+
+:local(.col ) {
+  max-width: 100%;
+  flex-grow: 0;
+    flex-basis: calc(100% / 7);
+    width: calc(100% / 7);
+}
+
+:local(.colStart ) {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+:local(.colCenter) {
+  justify-content: center;
+  text-align: center;
+}
+
+:local(.colEnd) {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+/*calendar*/
+
+:local(.navigation) {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 115%;
+  padding: 1.5rem 0.5rem;
+  border-bottom: 0.0625rem solid #eee;
+  display: flex;
+  justify-content: space-between;
+}
+
+:local(.weekDays){
+  text-transform: uppercase;
+  font-weight: 400;
+  color: #303030;
+  font-size: 70%;
+  padding: 0.75rem 0;
+  border-bottom: 0.0625rem solid #eee;
+}
+
+:local(.selected) {
+  border-left: 0.625rem solid #cc2845;
+}
+
+:local(.disabled) {
+  color: #ccc;
+  pointer-events: none;
+}
+
+:local(.dayBorder) {
+  border-bottom: 0.0625rem solid #eee;
+}
+
+:local(.dayBorder:last-child) {
+  border-bottom: none;
+}
+
+:local(.dayBox) {
+  position: relative;
+  height: 5em;
+  border-right: 1px solid #eee;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.25s ease-out;
+}
+
+:local(.dayBox:hover) {
+  background: #f9f9f9;
+  transition: 0.5s ease-out;
+}
+
+:local(.dayBox:last-child) {
+  border-right: none;
+}
+
+:local(.dateDay) {
+  position: absolute;
+  font-size: 90%;
+  line-height: 1;
+  top: 1rem;
+  right: 1rem;
+  font-weight: 700;
+}
+

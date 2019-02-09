@@ -1,3 +1,11 @@
+/* FONT IMPORTS */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300, 400, 700');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -6,9 +14,52 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgba(238, 238, 238, 0.99);
+  color: rgba(48, 48, 48, 0.6);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+
+.App{
+  margin-top: 15vh;
+}
+
+
+.icon {
+  font-family: "Material Icons", serif;
+  font-style: normal;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "liga";
+  cursor: pointer;
+  transition: 0.15s ease-out;
+}
+
+
+.icon:hover {
+  transform: scale(1.75);
+  transition: 0.25s ease-out;
+  color: #CC2845;
+}
+
+
+.icon:first-of-type {
+  margin-left: 1em;
+}
+
+.icon:last-of-type {
+  margin-right: 1em;
 }
