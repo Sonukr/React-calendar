@@ -9,7 +9,6 @@ export class Calendar extends React.Component {
     super(props);
     this.state = {
       currentMonth: new Date(),
-      // currentMonth: new Date(),
       selectedDate: new Date(),
       year: '',
       month: ''
@@ -39,13 +38,17 @@ export class Calendar extends React.Component {
         currentMonth: dateFns.setDate(new Date(this.state.year, this.state.month-1, 1), 1),
         selectedDate: dateFns.setDate(new Date(this.state.year, this.state.month-1, 1), 1)
       });
-      console.log(this.state)
+    }else if(this.state.year === '' && this.state.month === ''){
+      this.setState({
+        currentMonth: new Date(),
+        selectedDate: new Date()
+      });
     }
   }
 
   handleChange = (event)  => {
     console.log(event.target.value)
-    this.setState({[event.target.name]: event.target.value});
+    this.setState({[event.target.name]: event.target.value}, () => this.handleSWitch());
     this.handleSWitch();
   }
 
@@ -55,10 +58,10 @@ export class Calendar extends React.Component {
       <div className={classnames(styles.row, styles.navigation)}>
         <div className={classnames(styles.col, styles.colStart)} onClick={this.prevMonth}>
           <div className="icon">chevron_left</div>
-          <p>{this.state.year} {this.state.month}</p>
         </div>
         <div>
           <select value={this.state.year} onChange={this.handleChange} name='year'>
+            <option value="">Select a year</option>
             <option value="2015">2015</option>
             <option value="2016">2016</option>
             <option value="2017">2017</option>
@@ -72,6 +75,7 @@ export class Calendar extends React.Component {
         </div>
         <div>
           <select value={this.state.month} onChange={this.handleChange} name='month'>
+            <option value="">Select a month</option>
             <option value="1">Jan</option>
             <option value="2">Feb</option>
             <option value="3">March</option>
