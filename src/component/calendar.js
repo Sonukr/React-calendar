@@ -7,11 +7,19 @@ export class Calendar extends React.Component {
 
   constructor(props){
     super(props);
+    const l = window.location.search;
+    let month = '';
+    let year = ''
+    if(l !== ''){
+      const p = l.split('').slice(1).join('').split('&&');
+      month = p[0];
+      year = p[1];
+    }
     this.state = {
       currentMonth: new Date(),
       selectedDate: new Date(),
-      year: '',
-      month: ''
+      year: year,
+      month: month
     };
   }
 
@@ -26,23 +34,27 @@ export class Calendar extends React.Component {
         currentMonth: dateFns.setDate(new Date(this.state.year, 0, 1), 1),
         selectedDate: dateFns.setDate(new Date(this.state.year, 0, 1), 1)
       });
+      window.history.pushState('', '', '?1'+ '&&'+ this.state.year);
 
     }else if(this.state.year === '' && this.state.month !== ''){
       this.setState({
         currentMonth: dateFns.setDate(new Date(new Date().getFullYear(), this.state.month-1, 1), 1),
         selectedDate: dateFns.setDate(new Date(new Date().getFullYear(), this.state.month-1, 1), 1)
       });
+      window.history.pushState('', '', '?'+ this.state.month+'&&'+ new Date().getFullYear());
 
     }else if(this.state.year !== '' && this.state.month !== '') {
       this.setState({
         currentMonth: dateFns.setDate(new Date(this.state.year, this.state.month-1, 1), 1),
         selectedDate: dateFns.setDate(new Date(this.state.year, this.state.month-1, 1), 1)
       });
+      window.history.pushState('', '', '?'+this.state.month+'&&'+ this.state.year);
     }else if(this.state.year === '' && this.state.month === ''){
       this.setState({
         currentMonth: new Date(),
         selectedDate: new Date()
       });
+      window.history.pushState('', '', '/');
     }
   }
 
